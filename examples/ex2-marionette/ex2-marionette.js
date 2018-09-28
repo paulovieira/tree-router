@@ -211,19 +211,26 @@ function create(parent, req, childData){
 
 function mount(parent, current, req, childData) {
 
-  var region;
+  // if we return null (or undefined), from create, stop processing right away
+  // (this is useful for "redirect" routes)
 
-  if ((current || {}).view instanceof Mn.View === false) {
+  if (current == null) {
+      return;
+  }
+
+  if (current.view instanceof Mn.View === false) {
     throw new Error('the "view" property in the current obj is not an instance of Mn.View');
   }
-  
+
+  var region;
+
   // parent might be null in some cases (for the 1st level objects in the tree)
  
   if (parent == null) {
     region = rootR;
   }
   else {
-    if ((parent || {}).view instanceof Mn.View === false) {
+    if (parent.view instanceof Mn.View === false) {
       throw new Error('the "view" property in the parent obj is not an instance of Mn.View');
     }
 
