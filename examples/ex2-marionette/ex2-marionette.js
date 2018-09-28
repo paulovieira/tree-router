@@ -191,11 +191,8 @@ function getRegion(view, regionName, index) {
 function create(parent, req, childData){
 
   var viewClass = childData.viewClass;
-  //var viewOptions = _.extend({ req }, childData.viewOptions);
   var viewOptions = _.extend({ req }, childData.viewOptions);
-  var regionToMount = childData.regionToMount;
-
-  var region = (parent == null) ? rootR : getRegion(parent.view, regionToMount, childData._index);
+  var region = (parent == null) ? rootR : getRegion(parent.view, childData.regionToMount, childData._index);
 
   var view, viewIsRecycled;
 
@@ -230,7 +227,7 @@ function mount(parent, current, req, childData) {
       throw new Error('the "view" property in the parent obj is not an instance of Mn.View');
     }
 
-    region = getRegion(parent.view, current.regionToMount, childData._index);
+    region = getRegion(parent.view, childData.regionToMount, childData._index);
   }
 
   if (current.viewIsRecycled === false) {
