@@ -266,18 +266,15 @@ var route1 = {
     { 
       viewClass: ViewA,
       viewOptions: { x: 1 },
-      regionName: null,
 
       children: [
         {
           viewClass: ViewB,
           viewOptions: { x: 2 },
-          regionName: null
         },
         {
           viewClass: ViewC,
           viewOptions: { x: 3 },
-          regionName: null
         }
       ],
 
@@ -294,18 +291,15 @@ var route2 = {
     { 
       viewClass: ViewA,
       viewOptions: { x: 4 },
-      regionName: null,
 
       children: [
         {
           viewClass: ViewB,
           viewOptions: { x: 5 },
-          regionName: null,
         },
         {
           viewClass: ViewD,
           viewOptions: { x: 6 },
-          regionName: null,
         }
       ],
 
@@ -322,18 +316,15 @@ var route3 = {
     { 
       viewClass: ViewA,
       viewOptions: { x: 7 },
-      regionName: null,
 
       children: [
         {
           viewClass: ViewB,
           viewOptions: { x: 8 },
-          regionName: null,
         },
         {
           viewClass: ViewE,
           viewOptions: { x: 9 },
-          regionName: null,
         }
       ],
 
@@ -350,13 +341,11 @@ var route4 = {
     { 
       viewClass: ViewA,
       viewOptions: { x: 10 },
-      regionName: null,
 
       children: [
         {
           viewClass: ViewB,
           viewOptions: { x: 11 },
-          regionName: null,
         },
         
         {
