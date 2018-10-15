@@ -997,9 +997,14 @@ var TreeRouter = Router.extend({
       childData._index = i;
 
       var currentValue = create(parentValue, __WEBPACK_IMPORTED_MODULE_0_underscore___default.a.extend({}, requestData), childData);
+
+      // return false in create to stop processing the current route tree (should be
+      // used for redirection purposes, using a "pre" method in first-level objects)
+      if (currentValue === false) { return }
+
       var isPromise = currentValue instanceof Promise;
 
-      if (isPromise === false) {
+      if (!isPromise) {
         // sync processing
         router._processChildren(currentValue, childObj.children, requestData);
         mount(parentValue, currentValue, __WEBPACK_IMPORTED_MODULE_0_underscore___default.a.extend({}, requestData), childData);
