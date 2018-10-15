@@ -191,7 +191,7 @@ function getRegion(view, regionName, index) {
 function create(parent, req, childData){
 
   if (parent == null && typeof childData.pre === 'function') {
-    if (childData.pre(req) === false) { return }
+    if (childData.pre(req) === false) { return false }
   }
 
   var viewClass = childData.viewClass;
