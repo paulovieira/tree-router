@@ -190,6 +190,10 @@ function getRegion(view, regionName, index) {
 
 function create(parent, req, childData){
 
+  if (parent == null && typeof childData.pre === 'function') {
+    if (childData.pre(req) === false) { return }
+  }
+
   var viewClass = childData.viewClass;
   var viewOptions = _.extend({ req }, childData.viewOptions);
   var region = (parent == null) ? rootR : getRegion(parent.view, childData.regionToMount, childData._index);
