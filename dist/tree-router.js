@@ -781,7 +781,9 @@ internals.history.loadUrl = function(fragment) {
   if (!this.matchRoot()) return false;
 
   fragment = this.fragment = this.getFragment(fragment);
+
   var allowLeadingSlash = this.options.allowLeadingSlash;
+  var fragmentWithLeadingSlash = '/' + fragment;
 
   return __WEBPACK_IMPORTED_MODULE_0_underscore___default.a.some(this.handlers, function(handler) {
 
@@ -791,11 +793,9 @@ internals.history.loadUrl = function(fragment) {
     }
 
     // test handler.route again, now with a leading slash
-    if (allowLeadingSlash !== false) {
-      if (handler.route.test('/' + fragment)) {
-        handler.callback('/' + fragment);
-        return true;
-      }      
+    if (handler.route.test(fragmentWithLeadingSlash) && allowLeadingSlash !== false) {
+      handler.callback(fragmentWithLeadingSlash);
+      return true;
     }
   });
 };
